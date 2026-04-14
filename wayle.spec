@@ -16,6 +16,7 @@ BuildRequires: cairo-devel
 BuildRequires: cairo-gobject-devel
 BuildRequires: gtk4-devel
 BuildRequires: gtk4-layer-shell-devel
+BuildRequires: gtksourceview5-devel
 BuildRequires: systemd-devel
 BuildRequires: libxkbcommon-devel
 BuildRequires: pulseaudio-libs-devel
