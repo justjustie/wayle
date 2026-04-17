@@ -31,6 +31,7 @@ Requires: gtk4-layer-shell
 Requires: pulseaudio-libs
 Requires: fftw
 Requires: pipewire-libs
+Requires: libglvnd-gles
 
 Suggests: upower
 Suggests: NetworkManager
