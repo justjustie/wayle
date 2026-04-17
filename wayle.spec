@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name: wayle
-Version: 0.2.0
+Version: 0.2.1
 Release: 1%{dist}
 Summary: A configurable desktop shell for Wayland compositors
 
