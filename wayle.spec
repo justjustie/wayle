@@ -2,7 +2,7 @@
 
 Name: wayle
 Version: 0.2.1
-Release: 1%{dist}
+Release: 1%{?dist}
 Summary: A configurable desktop shell for Wayland compositors
 
 License: MIT
@@ -25,6 +25,7 @@ BuildRequires: pipewire-devel
 BuildRequires: clang-devel
 BuildRequires: cargo
 BuildRequires: pkgconf-pkg-config
+BuildRequires: desktop-file-utils
 
 Requires: gtk4
 Requires: gtk4-layer-shell
@@ -32,6 +33,7 @@ Requires: pulseaudio-libs
 Requires: fftw
 Requires: pipewire-libs
 Requires: libglvnd-gles
+Requires: hicolor-icon-theme
 
 Suggests: upower
 Suggests: NetworkManager
@@ -49,11 +51,11 @@ cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 cargo build --frozen --release
 
 %install
-install -Dm755 target/release/%{name} %{buildroot}%{_bindir}/%{name} 
+install -Dm755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm755 target/release/%{name}-settings %{buildroot}%{_bindir}/%{name}-settings
 
-install -dm755 %{buildroot}%{_datadir}/%{name}/icons
-cp -r resources/icons/hicolor %{buildroot}%{_datadir}/%{name}/icons
+install -d %{buildroot}%{_datadir}/icons/hicolor/scalable/actions
+install -m 0644 resources/icons/hicolor/scalable/actions/*.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/actions/
 
 target/release/%{name} completions bash > wayle.bash
 target/release/%{name} completions zsh > _wayle
@@ -65,12 +67,13 @@ install -Dm644 wayle.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/wayl
 
 install -Dm644 resources/wayle.service %{buildroot}%{_userunitdir}/wayle.service
 install -Dm644 resources/com.wayle.settings.desktop %{buildroot}%{_datadir}/applications/com.wayle.settings.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/com.wayle.settings.desktop
 install -Dm644 resources/wayle-settings.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/wayle-settings.svg
 
 %files
 %{_bindir}/%{name}
 %{_bindir}/%{name}-settings
-%{_datadir}/%{name}/
+%{_datadir}/icons/hicolor/scalable/actions/*.svg
 %{_datadir}/bash-completion/completions/wayle
 %{_datadir}/zsh/site-functions/_wayle
 %{_datadir}/fish/vendor_completions.d/wayle.fish
