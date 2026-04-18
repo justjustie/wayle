@@ -9,19 +9,19 @@ License: MIT
 URL: https://github.com/wayle-rs/wayle
 Source0: {{{ git_dir_pack }}}
 
-BuildRequires: glib2-devel
-BuildRequires: gdk-pixbuf2-devel
-BuildRequires: pango-devel
-BuildRequires: cairo-devel
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gdk-pixbuf-2.0)
+BuildRequires: pkgconfig(pango)
+BuildRequires: pkgconfig(cairo)
 BuildRequires: cairo-gobject-devel
-BuildRequires: gtk4-devel
-BuildRequires: gtk4-layer-shell-devel
-BuildRequires: gtksourceview5-devel
-BuildRequires: systemd-devel
-BuildRequires: libxkbcommon-devel
-BuildRequires: pulseaudio-libs-devel
-BuildRequires: fftw-devel
-BuildRequires: pipewire-devel
+BuildRequires: pkgconfig(gtk4)
+BuildRequires: pkgconfig(gtk4-layer-shell-0)
+BuildRequires: pkgconfig(gtksourceview-5)
+BuildRequires: pkgconfig(systemd)
+BuildRequires: pkgconfig(xkbcommon)
+BuildRequires: pkgconfig(libpulse)
+BuildRequires: pkgconfig(fftw3)
+BuildRequires: pkgconfig(libpipewire-0.3)
 BuildRequires: clang-devel
 BuildRequires: cargo
 BuildRequires: pkgconf-pkg-config
